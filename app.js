@@ -15,6 +15,10 @@ app.use(bodyParser.json());
 
 app.use('/api/nfl', nfl);
 
+app.use(function(req, res, next) {
+  res.end("404");
+});
+
 app.listen(process.env.PORT || 3000);
 console.log("woot server on 3000");
 
