@@ -22,4 +22,7 @@ router.get('/player/:id', function(req, res, next) {
     res.status(200).json(data);
   });
 });
+router.get('/test', function(req, res, next) {
+    res.end("it works!");
+});
 module.exports = router;
