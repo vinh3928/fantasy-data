@@ -13,6 +13,16 @@ router.get('/allplayers/:date', function(req, res, next) {
   });
 });
 
+router.get('/fantasyplayers', function(req, res, next) {
+  axios({
+    method: "get",
+    url: "http://api.nfldata.apiphany.com/nfl/v2/JSON/FantasyPlayers",
+    headers: {"Ocp-Apim-Subscription-Key": process.env.FANTASY_NFL_KEY}
+  }).then(function(data) {
+    res.status(200).json(data);
+  });
+});
+
 router.get('/player/:id', function(req, res, next) {
   axios({
     method: "get",
