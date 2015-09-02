@@ -22,7 +22,15 @@ router.get('/player/:id', function(req, res, next) {
     res.status(200).json(data);
   });
 });
-router.get('/test', function(req, res, next) {
-    res.end("it works!");
+
+router.get("/playerstats/:year/:week/:id", function(req, res, next) {
+  axios({
+    method: "get",
+    url: "http://api.nfldata.apiphany.com/nfl/v2/JSON/PlayerGameStatsByPlayerID/" + req.params.year + "/" + req.params.week + "/"+ req.params.id,
+    headers: {"Ocp-Apim-Subscription-Key": process.env.FANTASY_NFL_KEY}
+  }).then(function(data) {
+    res.status(200).json(data);
+  });
+
 });
 module.exports = router;
